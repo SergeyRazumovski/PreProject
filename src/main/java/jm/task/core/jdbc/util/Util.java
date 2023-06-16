@@ -13,7 +13,7 @@ public class Util {
             String user = "postgres";
             String password = "02633512";
             connection = DriverManager.getConnection(url, user, password);
-//            System.out.println("Подключение к базе данных");
+            System.out.println("Подключение к базе данных");
         } catch (SQLException e) {
             System.out.println("Ошибка в методе getConnection: " + e.getMessage());
         }
@@ -24,7 +24,7 @@ public class Util {
         if (connection != null) {
             try {
                 connection.close();
-//                System.out.println("Соединение с базой данных закрыто");
+                System.out.println("Соединение с базой данных закрыто");
             } catch (SQLException e) {
                 System.out.println("Ошибка в методе closeConnection: " + e.getMessage());
             }

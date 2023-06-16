@@ -68,7 +68,7 @@ public class User {
     }
 
     @Override
-    public String toString() {
+    public String toString() { //переопределил для корректного отображения
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +

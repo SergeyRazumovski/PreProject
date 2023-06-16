@@ -58,8 +58,8 @@ public class UserServiceImpl implements UserService {
     public void removeUserById(long id) {
         String sql = "DELETE FROM users WHERE id = ?";
 
-        try(Connection connection = Util.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+        try (Connection connection = Util.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setLong(1, id);
             int rowsDeleted = preparedStatement.executeUpdate();
             if (rowsDeleted > 0) {
@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService {
                 System.out.println("Пользователь с ID " + id + " не найден в базе данных");
             }
             Util.closeConnection(connection);
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Ошибка в методе removeUserById: " + e.getMessage());
         }
     }
