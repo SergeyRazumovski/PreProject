@@ -6,6 +6,7 @@ import jm.task.core.jdbc.service.UserServiceImpl;
 
 import java.util.List;
 //1.1.3 Задача
+//комментарий для проверки изменений в ветке master
 public class Main {
     public static void main(String[] args) {
         // реализуйте алгоритм здесь
