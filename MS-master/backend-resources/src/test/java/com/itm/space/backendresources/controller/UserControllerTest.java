@@ -80,10 +80,10 @@ public class UserControllerTest extends BaseIntegrationTest {
         MockHttpServletResponse response = mvc.perform(requestWithContent(post("/api/users"),
                         new UserRequest(
                                 "",
-                                "321",
-                                "123q123e",
-                                "123",
-                                "Кукаяка")))
+                                "notEmail",
+                                "12345678",
+                                "666",
+                                "LKmsfa")))
                 .andDo(print())
                 .andExpect(jsonPath("$.username").value("Username should not be blank"))
                 .andExpect(jsonPath("$.email").value("Email should be valid"))
@@ -102,11 +102,11 @@ public class UserControllerTest extends BaseIntegrationTest {
 
         MockHttpServletResponse response = mvc.perform(requestWithContent(post("/api/users"),
                         new UserRequest(
-                                "Anatoliy",
-                                "av4@av4.ru",
-                                "123q123e",
-                                "Tolya",
-                                "Chepelenko")))
+                                "RazumOff",
+                                "SR@email.ru",
+                                "12345678",
+                                "Sergei",
+                                "Razumovski")))
                 .andReturn()
                 .getResponse();
         assertEquals(HttpStatus.OK.value(), response.getStatus());
@@ -124,9 +124,9 @@ public class UserControllerTest extends BaseIntegrationTest {
 
         UserRepresentation userRepresentation = new UserRepresentation();
         userRepresentation.setId(String.valueOf(testId));
-        userRepresentation.setFirstName("tolick");
-        userRepresentation.setLastName("tolick");
-        userRepresentation.setEmail("tolik@mail.ru");
+        userRepresentation.setFirstName("Sergei");
+        userRepresentation.setLastName("Razumovski");
+        userRepresentation.setEmail("SR@email.ru");
 
         when(userResource.toRepresentation()).thenReturn(userRepresentation);
         when(userResource.roles()).thenReturn(roleMappingResource);
@@ -135,7 +135,7 @@ public class UserControllerTest extends BaseIntegrationTest {
         MockHttpServletResponse response = mvc.perform(get("/api/users/" + testId))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.firstName").value("tolick"))
+                .andExpect(jsonPath("$.firstName").value("Sergei"))
                 .andReturn()
                 .getResponse();
         assertEquals(HttpStatus.OK.value(), response.getStatus());
